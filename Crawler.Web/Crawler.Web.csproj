@@ -134,6 +134,7 @@
     <Content Include="Content\images\gears.svg" />
     <Content Include="Content\js\Root.js" />
     <Content Include="Content\js\SearchForm.js" />
+    <Content Include="Content\js\Utils.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -161,6 +162,7 @@
     <Content Include="Views\Root\SearchForm.cshtml" />
     <Content Include="Views\Root\SearchResults.cshtml" />
     <Content Include="nlog.config" />
+    <Content Include="Views\Root\ErrorPopup.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

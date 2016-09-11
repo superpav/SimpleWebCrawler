@@ -11,8 +11,8 @@
 <div class="search-form">
 	@using (Html.BeginForm(actionName, "Root", FormMethod.Post))
 	{
+		@Html.ValidationMessageFor(x => x.Query)
 		<div class="input-group">
-			@Html.ValidationMessageFor(x => x.Query)
 			@Html.TextBoxFor(x => x.Query, new {@class = "form-control"})
 			<span class="input-group-btn">
 				<input class="btn btn-default" type="submit" value="Search" />

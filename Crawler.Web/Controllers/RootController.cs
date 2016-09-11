@@ -1,5 +1,5 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Crawler.Domain.Entities;
@@ -39,14 +39,14 @@ namespace Crawler.Web.Controllers
 		public async Task<ActionResult> Search(SearchFormModel model)
 		{
 			if (!ModelState.IsValid)
-				return null;
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
 			var searchResult = await this.SearchProcessor.SearchAsync(model.Query);
 			var searchResultParser = SearchResultParserFactory.CreateParser(searchResult.EngineType);
 			var parsedResults = searchResultParser.Parse(searchResult.Result).ToList();
 
 			if (parsedResults.Count == 0)
-				return null;
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
 			var searchQuery = new SearchQuery
 			{
@@ -57,9 +57,9 @@ namespace Crawler.Web.Controllers
 			{
 				searchQuery.SearchResult.Add(new SearchResult
 				{
-					Link = result.Url ?? String.Empty,
-					Title = result.Title ?? String.Empty,
-					Description = result.Desciption ?? String.Empty,
+					Link = result.Url,
+					Title = result.Title,
+					Description = result.Desciption,
 					SearchEngineType = searchResult.EngineType
 				});
 			}
@@ -75,7 +75,7 @@ namespace Crawler.Web.Controllers
 		public ActionResult SearchHistory(SearchFormModelWithOffset model)
 		{
 			if (!ModelState.IsValid)
-				return null;
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
 			var query = this.DbContext.SearchResult
 				.Where(x => x.SearchQuery.Query.Contains(model.Query));

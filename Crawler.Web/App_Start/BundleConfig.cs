@@ -12,6 +12,7 @@ namespace Crawler.Web.App_Start
 			bundles.Add(new StyleBundle(StylesBundleName).Include("~/Content/css/Styles.css"));
 
 			bundles.Add(new ScriptBundle(ScriptsBundleName)
+				.Include("~/Content/js/Utils.js")
 				.Include("~/Content/js/Root.js")
 				.Include("~/Content/js/SearchForm.js"));
 		}

@@ -37,6 +37,16 @@ header .title-container .content {
 	margin-top: 20px;
 }
 
+.search-results-container > .list-group.disabled {
+	opacity: 0.5;
+}
+
+.search-results-container > .list-group .label {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+}
+
 .loader {
 	background: url("../images/gears.svg") no-repeat center center;
 	width: 120px;
@@ -45,4 +55,12 @@ header .title-container .content {
 	top: calc(50% - 60px);
 	left: calc(50% - 60px);
 	display: none;
+}
+
+.input-validation-error {
+	border-color: red;
+}
+
+.field-validation-error {
+	color: red;
 }

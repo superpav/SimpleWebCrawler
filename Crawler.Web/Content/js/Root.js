@@ -18,12 +18,8 @@
 
 	function tryLoadNextPage()
 	{
-		console.log('no-more-elements: ' + $resultsContainer.data('no-more-elements'));
-
 		if ($resultsContainer.data('no-more-elements'))
 			return;
-
-		console.log('loading: ' + $resultsContainer.data('loading'));
 
 		if ($resultsContainer.data('loading'))
 			return;
@@ -39,10 +35,12 @@
 		var url = $form.attr('action');
 		var data = $form.serialize() + "&offset=" + offset;
 
-		$.post({
+		$.ajax({
 			url: url,
+			type: 'POST',
 			data: data,
-			success: onNextPageLoaded
+			success: onNextPageLoaded,
+			error: Utils.onAjaxError
 		});
 	}
 

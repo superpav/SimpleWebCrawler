@@ -4,7 +4,7 @@ namespace Crawler.Web.ViewModels
 {
 	public class SearchFormModel
 	{
-		[Required]
+		[Required(ErrorMessage = "Необходимо указать слово для поиска")]
 		public string Query { get; set; }
 	}
 }

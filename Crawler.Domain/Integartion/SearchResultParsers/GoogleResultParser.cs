@@ -18,10 +18,16 @@ namespace Crawler.Domain.Integartion.SearchResultParsers
 			var link = searchItemCq.Find(".r a").First();
 			var descriptionElement = searchItemCq.Find(".s span.st");
 
-			return new ParsedSearchEngineResult()
+			var url = link.Attr("href").Replace("/url?q=", String.Empty);
+			var paramtersIndex = url.IndexOf("&sa=", StringComparison.InvariantCulture);
+
+			if (paramtersIndex != -1)
+				url = url.Remove(paramtersIndex);
+
+			return new ParsedSearchEngineResult
 			{
 				Title = link.Text(),
-				Url = link.Attr("href").Replace("/url?q=", String.Empty),
+				Url = url,
 				Desciption = descriptionElement.Text()
 			};
 		}

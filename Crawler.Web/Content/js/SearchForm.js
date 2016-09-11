@@ -5,14 +5,11 @@
 		var $content = $(content);
 		var $container = $('.list-group', '.search-results-container');
 
-		$('.loader').hide();
+		Utils.hideLoader();
+		$('.list-group').removeClass('disabled');
 
 		$container.empty();
 		$container.append($content);
-	}
-
-	function onFormError()
-	{
 	}
 
 	function onFormSubmit(event)
@@ -20,17 +17,21 @@
 		event.preventDefault();
 
 		var $target = $(event.target);
+
+		if (!$target.valid())
+			return;
+
 		var url = $target.attr('action');
 
-		$('.loader').show();
+		Utils.showLoader();
+		$('.list-group').addClass('disabled');
 
-		console.log($target.serialize());
-
-		$.post({
+		$.ajax({
 			url: url,
+			type: 'POST',
 			data: $target.serialize(),
 			success: onFormSuccess,
-			error: onFormError
+			error: Utils.onAjaxError
 		});
 	}
 
