@@ -1,0 +1,22 @@
+﻿@using Crawler.Web.Controllers
+@using Crawler.Web.ViewModels
+@model SearchFormModel
+
+@{
+	var actionName = this.ViewBag.SearchType == SearchType.History
+		? nameof(RootController.SearchHistory)
+		: nameof(RootController.Search);
+}
+
+<div class="search-form">
+	@using (Html.BeginForm(actionName, "Root", FormMethod.Post))
+	{
+		<div class="input-group">
+			@Html.ValidationMessageFor(x => x.Query)
+			@Html.TextBoxFor(x => x.Query, new {@class = "form-control"})
+			<span class="input-group-btn">
+				<input class="btn btn-default" type="submit" value="Search" />
+			</span>
+		</div>
+	}
+</div>

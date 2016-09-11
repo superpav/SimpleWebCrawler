@@ -2,7 +2,7 @@ using System.Data.Entity;
 
 namespace Crawler.Domain.Entities
 {
-	public partial class CrawlerContext : DbContext
+	public partial class CrawlerContext : DbContext, ICrawlerContext
 	{
 		public virtual DbSet<SearchQuery> SearchQuery { get; set; }
 		public virtual DbSet<SearchResult> SearchResult { get; set; }

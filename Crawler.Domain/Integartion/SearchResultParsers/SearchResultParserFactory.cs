@@ -5,7 +5,7 @@ namespace Crawler.Domain.Integartion.SearchResultParsers
 {
 	public class SearchResultParserFactory
 	{
-		public SearchResultParserBase CreateParser(SearchEngineType searchEngineType)
+		public static SearchResultParserBase CreateParser(SearchEngineType searchEngineType)
 		{
 			switch (searchEngineType)
 			{
