@@ -1,5 +1,4 @@
 using System.Data.Entity;
-using System.Threading.Tasks;
 
 namespace Crawler.Domain.Entities
 {
@@ -7,6 +6,6 @@ namespace Crawler.Domain.Entities
 	{
 		DbSet<SearchQuery> SearchQuery { get; set; }
 		DbSet<SearchResult> SearchResult { get; set; }
-		Task<int> SaveChangesAsync();
+		int SaveChanges();
 	}
 }

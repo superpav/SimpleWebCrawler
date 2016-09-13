@@ -1,20 +1,21 @@
 ﻿using System.Web.Mvc;
-using Castle.MicroKernel;
+using Castle.Windsor;
 
 namespace Crawler.Web.Framework.IoC
 {
 	public class CustomControllerFactory : DefaultControllerFactory
 	{
-		private readonly IKernel _kernel;
+		private readonly WindsorContainer _container;
 
-		public CustomControllerFactory(IKernel kernel)
+		public CustomControllerFactory(WindsorContainer container)
 		{
-			this._kernel = kernel;
+			this._container = container;
 		}
 
 		public override void ReleaseController(IController controller)
 		{
-			this._kernel.ReleaseComponent(controller);
+			base.ReleaseController(controller);
+			this._container.Release(controller);
 		}
 	}
 }

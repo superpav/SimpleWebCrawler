@@ -5,6 +5,11 @@ namespace Crawler.Web.Framework.Mvc
 {
 	public class CustomController : Controller
 	{
-		public ICrawlerContext DbContext { get; set; }
+		protected readonly ICrawlerContext DbContext;
+
+		public CustomController(ICrawlerContext dbContext)
+		{
+			this.DbContext = dbContext;
+		}
 	}
 }

@@ -13,9 +13,14 @@ namespace Crawler.Web.Controllers
 {
 	public class RootController : CustomController
 	{
-		public ISearchProcessor SearchProcessor { get; set; }
+		protected readonly ISearchProcessor SearchProcessor;
 
 		protected Logger Logger = LogManager.GetCurrentClassLogger();
+
+		public RootController(ISearchProcessor searchProcessor, ICrawlerContext dbContext) : base(dbContext)
+		{
+			this.SearchProcessor = searchProcessor;
+		}
 
 		public ActionResult Root()
 		{
@@ -46,7 +51,7 @@ namespace Crawler.Web.Controllers
 			var parsedResults = searchResultParser.Parse(searchResult.Result).ToList();
 
 			if (parsedResults.Count == 0)
-				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+				return new EmptyResult();
 
 			var searchQuery = new SearchQuery
 			{
@@ -65,8 +70,7 @@ namespace Crawler.Web.Controllers
 			}
 
 			this.DbContext.SearchQuery.Add(searchQuery);
-
-			await this.DbContext.SaveChangesAsync();
+			this.DbContext.SaveChanges();
 
 			return this.PartialView("SearchResults", searchQuery.SearchResult.AsEnumerable());
 		}

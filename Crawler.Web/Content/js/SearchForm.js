@@ -9,6 +9,10 @@
 		$('.list-group').removeClass('disabled');
 
 		$container.empty();
+
+		if ($content.length == 0)
+			$content = '<li class="list-group-item"><p class="list-group-item-text">Элементы не найдены</p></li>';
+
 		$container.append($content);
 	}
 

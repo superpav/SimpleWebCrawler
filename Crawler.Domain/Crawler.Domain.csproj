@@ -84,6 +84,9 @@
     <Compile Include="Entities\SearchEngineType.cs" />
     <Compile Include="Entities\SearchQuery.cs" />
     <Compile Include="Entities\SearchResult.cs" />
+    <Compile Include="Integartion\SearchEngineRepositories\Installer.cs" />
+    <Compile Include="Integartion\SearchEngineRepositories\ISearchEngineRepository.cs" />
+    <Compile Include="Integartion\SearchEngineRepositories\SearchEngineRepository.cs" />
     <Compile Include="Integartion\SearchEngines\BingSearchEngine.cs" />
     <Compile Include="Integartion\SearchEngines\GoogleSearchEngine.cs" />
     <Compile Include="Integartion\SearchEngines\Installer.cs" />

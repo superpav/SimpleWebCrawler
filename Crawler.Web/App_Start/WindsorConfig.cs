@@ -10,7 +10,7 @@ namespace Crawler.Web.App_Start
 		{
 			Container.Current.Install(FromAssembly.InThisApplication());
 
-			var controllerFactory = new CustomControllerFactory(Container.Current.Kernel);
+			var controllerFactory = new CustomControllerFactory(Container.Current);
 			ControllerBuilder.Current.SetControllerFactory(controllerFactory);
 
 			var customDependecyResolver = new CustomDependecyResolver(Container.Current);

@@ -3,24 +3,18 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Crawler.Domain.Entities;
+using Crawler.Domain.Integartion.SearchEngineRepositories;
 using Crawler.Domain.Integartion.SearchEngines;
 
 namespace Crawler.Domain.Integartion.SearchProcessors
 {
 	public class SearchProcessor : ISearchProcessor
 	{
-		public GoogleSearchEngine Google { get; set; }
-		public YandexSearchEngine Yandex { get; set; }
-		public BingSearchEngine Bing { get; set; }
+		private readonly ISearchEngineRepository _searchEngineRepository;
 
-		private IList<SearchEngineBase> GetEnginesToSearch()
+		public SearchProcessor(ISearchEngineRepository searchEngineRepository)
 		{
-			return new List<SearchEngineBase>
-			{
-				this.Google,
-				this.Yandex,
-				this.Bing
-			};
+			this._searchEngineRepository = searchEngineRepository;
 		}
 
 		private IDictionary<SearchEngineType, CancellationTokenSource> GetCancellationTokensForEngines(
@@ -43,7 +37,7 @@ namespace Crawler.Domain.Integartion.SearchProcessors
 
 		public async Task<SearchEngineResult> SearchAsync(string query)
 		{
-			var searchEngines = this.GetEnginesToSearch();
+			var searchEngines = this._searchEngineRepository.GetEnginesToSearch();
 			var cancellationTokens = this.GetCancellationTokensForEngines(searchEngines);
 
 			var tasks = searchEngines.Select(x => x.SearchAsync(query, cancellationTokens[x.EngineType].Token));

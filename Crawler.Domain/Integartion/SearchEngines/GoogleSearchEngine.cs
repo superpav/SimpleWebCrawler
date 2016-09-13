@@ -4,7 +4,8 @@ namespace Crawler.Domain.Integartion.SearchEngines
 {
 	public class GoogleSearchEngine : SearchEngineBase
 	{
-		protected override string SearchUrl => "https://www.google.ru/search?q={0}";
+		public const string Url = "https://www.google.ru";
+		protected override string SearchUrl => Url + "/search?q={0}";
 		public override SearchEngineType EngineType => SearchEngineType.Google;
 	}
 }

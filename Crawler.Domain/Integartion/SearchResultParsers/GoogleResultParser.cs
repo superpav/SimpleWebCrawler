@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Crawler.Domain.Integartion.SearchEngines;
 using CsQuery;
 
 namespace Crawler.Domain.Integartion.SearchResultParsers
@@ -9,7 +10,7 @@ namespace Crawler.Domain.Integartion.SearchResultParsers
 	{
 		protected override IEnumerable<IDomObject> GetItems(CQ document)
 		{
-			return document.Find("#res .g").Take(10);
+			return document.Find("#res .g").Where(x => x.HasChildren).Take(10);
 		}
 
 		protected override ParsedSearchEngineResult ParseItem(IDomObject domObject)
@@ -18,18 +19,27 @@ namespace Crawler.Domain.Integartion.SearchResultParsers
 			var link = searchItemCq.Find(".r a").First();
 			var descriptionElement = searchItemCq.Find(".s span.st");
 
-			var url = link.Attr("href").Replace("/url?q=", String.Empty);
-			var paramtersIndex = url.IndexOf("&sa=", StringComparison.InvariantCulture);
-
-			if (paramtersIndex != -1)
-				url = url.Remove(paramtersIndex);
-
 			return new ParsedSearchEngineResult
 			{
 				Title = link.Text(),
-				Url = url,
+				Url = this.ParseUrl(link),
 				Desciption = descriptionElement.Text()
 			};
+		}
+
+		private string ParseUrl(CQ link)
+		{
+			var url = link.Attr("href").Replace("/url?q=", String.Empty);
+
+			if (url.StartsWith("/search"))
+				return GoogleSearchEngine.Url + url;
+
+			var paramtersIndex = url.IndexOf("&sa=", StringComparison.InvariantCulture);
+
+			if (paramtersIndex != -1)
+				return url.Remove(paramtersIndex);
+
+			return url;
 		}
 	}
 }

@@ -11,7 +11,7 @@ namespace Crawler.Domain.Integartion.SearchEngines
 		protected abstract string SearchUrl { get; }
 		public abstract SearchEngineType EngineType { get; }
 
-		public async Task<SearchEngineResult> SearchAsync(string query, CancellationToken cancellationToken)
+		public virtual async Task<SearchEngineResult> SearchAsync(string query, CancellationToken cancellationToken)
 		{
 			var url = String.Format(this.SearchUrl, query);
 
