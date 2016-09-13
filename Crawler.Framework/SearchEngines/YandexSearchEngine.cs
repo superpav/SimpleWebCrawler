@@ -1,6 +1,6 @@
 ﻿using Crawler.Domain.Entities;
 
-namespace Crawler.Domain.Integartion.SearchEngines
+namespace Crawler.Framework.SearchEngines
 {
 	public class YandexSearchEngine : SearchEngineBase
 	{

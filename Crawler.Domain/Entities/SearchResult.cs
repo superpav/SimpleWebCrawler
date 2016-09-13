@@ -12,13 +12,12 @@ namespace Crawler.Domain.Entities
 
 		public SearchEngineType SearchEngineType { get; set; }
 
-		[Required(AllowEmptyStrings = true)]
+		[Required]
 		public string Link { get; set; }
 
-		[Required(AllowEmptyStrings = true)]
+		[Required]
 		public string Title { get; set; }
 
-		[Required(AllowEmptyStrings = true)]
 		public string Description { get; set; }
 
 		public virtual SearchQuery SearchQuery { get; set; }

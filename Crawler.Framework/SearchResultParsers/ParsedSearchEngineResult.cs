@@ -1,4 +1,4 @@
-﻿namespace Crawler.Domain.Integartion.SearchResultParsers
+﻿namespace Crawler.Framework.SearchResultParsers
 {
 	public class ParsedSearchEngineResult
 	{

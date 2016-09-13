@@ -164,6 +164,7 @@
     <Content Include="Views\Root\SearchResults.cshtml" />
     <Content Include="nlog.config" />
     <Content Include="Views\Root\ErrorPopup.cshtml" />
+    <Content Include="appSettings.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -178,6 +179,10 @@
     <ProjectReference Include="..\Crawler.Domain\Crawler.Domain.csproj">
       <Project>{18ee052d-9fd3-4100-9a1a-357a370dddb6}</Project>
       <Name>Crawler.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Crawler.Framework\Crawler.Framework.csproj">
+      <Project>{1f079cc7-f3db-4fdf-a6bc-0e480d589139}</Project>
+      <Name>Crawler.Framework</Name>
     </ProjectReference>
     <ProjectReference Include="..\Crawler.Web.Framework\Crawler.Web.Framework.csproj">
       <Project>{8d5d3b35-decd-4d91-8a0f-b347e3a86e24}</Project>

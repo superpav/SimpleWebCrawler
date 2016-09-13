@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Crawler.Domain.Integartion.SearchEngines;
+using Crawler.Framework.SearchEngines;
 
-namespace Crawler.Domain.Integartion.SearchEngineRepositories
+namespace Crawler.Framework.SearchEngineRepositories
 {
 	public interface ISearchEngineRepository
 	{

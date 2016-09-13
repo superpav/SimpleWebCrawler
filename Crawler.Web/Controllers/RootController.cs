@@ -3,8 +3,8 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Crawler.Domain.Entities;
-using Crawler.Domain.Integartion.SearchProcessors;
-using Crawler.Domain.Integartion.SearchResultParsers;
+using Crawler.Framework.SearchProcessors;
+using Crawler.Framework.SearchResultParsers;
 using Crawler.Web.Framework.Mvc;
 using Crawler.Web.ViewModels;
 using NLog;
@@ -43,7 +43,7 @@ namespace Crawler.Web.Controllers
 		[HttpPost]
 		public async Task<ActionResult> Search(SearchFormModel model)
 		{
-			if (!ModelState.IsValid)
+			if (!this.ModelState.IsValid)
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
 			var searchResult = await this.SearchProcessor.SearchAsync(model.Query);
@@ -78,7 +78,7 @@ namespace Crawler.Web.Controllers
 		[HttpPost]
 		public ActionResult SearchHistory(SearchFormModelWithOffset model)
 		{
-			if (!ModelState.IsValid)
+			if (!this.ModelState.IsValid)
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
 			var query = this.DbContext.SearchResult

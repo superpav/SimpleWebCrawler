@@ -2,7 +2,7 @@
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 
-namespace Crawler.Domain.Integartion.SearchEngineRepositories
+namespace Crawler.Framework.SearchEngineRepositories
 {
 	public class Installer : IWindsorInstaller
 	{

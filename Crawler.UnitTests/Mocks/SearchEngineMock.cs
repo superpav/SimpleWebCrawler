@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Crawler.Domain.Entities;
-using Crawler.Domain.Integartion.SearchEngines;
+using Crawler.Framework.SearchEngines;
 
 namespace Crawler.UnitTests.Mocks
 {

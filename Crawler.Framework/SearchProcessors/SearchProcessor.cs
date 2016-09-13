@@ -1,12 +1,12 @@
-﻿using System.Linq;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Crawler.Domain.Entities;
-using Crawler.Domain.Integartion.SearchEngineRepositories;
-using Crawler.Domain.Integartion.SearchEngines;
+using Crawler.Framework.SearchEngineRepositories;
+using Crawler.Framework.SearchEngines;
 
-namespace Crawler.Domain.Integartion.SearchProcessors
+namespace Crawler.Framework.SearchProcessors
 {
 	public class SearchProcessor : ISearchProcessor
 	{

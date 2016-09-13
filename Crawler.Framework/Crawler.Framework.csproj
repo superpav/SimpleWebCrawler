@@ -4,28 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{18EE052D-9FD3-4100-9A1A-357A370DDDB6}</ProjectGuid>
+    <ProjectGuid>{1F079CC7-F3DB-4FDF-A6BC-0E480D589139}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Crawler.Domain</RootNamespace>
-    <AssemblyName>Crawler.Domain</AssemblyName>
+    <RootNamespace>Crawler.Framework</RootNamespace>
+    <AssemblyName>Crawler.Framework</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -57,19 +43,9 @@
       <HintPath>..\packages\CsQuery.1.3.4\lib\net40\CsQuery.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -78,30 +54,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\CrawlerContext.cs" />
-    <Compile Include="Entities\ICrawlerContext.cs" />
-    <Compile Include="Entities\Installer.cs" />
-    <Compile Include="Entities\SearchEngineType.cs" />
-    <Compile Include="Entities\SearchQuery.cs" />
-    <Compile Include="Entities\SearchResult.cs" />
+    <Compile Include="SearchEngineRepositories\Installer.cs" />
+    <Compile Include="SearchEngineRepositories\ISearchEngineRepository.cs" />
+    <Compile Include="SearchEngineRepositories\SearchEngineRepository.cs" />
+    <Compile Include="SearchEngines\BingSearchEngine.cs" />
+    <Compile Include="SearchEngines\GoogleSearchEngine.cs" />
+    <Compile Include="SearchEngines\Installer.cs" />
+    <Compile Include="SearchEngines\SearchEngineBase.cs" />
+    <Compile Include="SearchEngines\SearchEngineResult.cs" />
+    <Compile Include="SearchEngines\YandexSearchEngine.cs" />
+    <Compile Include="SearchProcessors\Installer.cs" />
+    <Compile Include="SearchProcessors\ISearchProcessor.cs" />
+    <Compile Include="SearchProcessors\SearchProcessor.cs" />
+    <Compile Include="SearchResultParsers\BingResultParser.cs" />
+    <Compile Include="SearchResultParsers\GoogleResultParser.cs" />
+    <Compile Include="SearchResultParsers\ParsedSearchEngineResult.cs" />
+    <Compile Include="SearchResultParsers\SearchResultParserBase.cs" />
+    <Compile Include="SearchResultParsers\SearchResultParserFactory.cs" />
+    <Compile Include="SearchResultParsers\YandexResultParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.6">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.6 %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
+    <ProjectReference Include="..\Crawler.Domain\Crawler.Domain.csproj">
+      <Project>{18ee052d-9fd3-4100-9a1a-357a370dddb6}</Project>
+      <Name>Crawler.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Crawler.Web.Framework\Crawler.Web.Framework.csproj">
+      <Project>{8d5d3b35-decd-4d91-8a0f-b347e3a86e24}</Project>
+      <Name>Crawler.Web.Framework</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using Crawler.Domain.Integartion.SearchEngines;
+using Crawler.Framework.SearchEngines;
 
-namespace Crawler.Domain.Integartion.SearchProcessors
+namespace Crawler.Framework.SearchProcessors
 {
 	public interface ISearchProcessor
 	{

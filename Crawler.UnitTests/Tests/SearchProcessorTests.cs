@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Crawler.Domain.Entities;
-using Crawler.Domain.Integartion.SearchProcessors;
+using Crawler.Framework.SearchProcessors;
 using Crawler.UnitTests.Mocks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

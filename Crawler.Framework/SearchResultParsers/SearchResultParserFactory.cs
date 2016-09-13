@@ -1,7 +1,7 @@
 ﻿using System;
 using Crawler.Domain.Entities;
 
-namespace Crawler.Domain.Integartion.SearchResultParsers
+namespace Crawler.Framework.SearchResultParsers
 {
 	public class SearchResultParserFactory
 	{

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using Crawler.Domain.Entities;
-using Crawler.Domain.Integartion.SearchProcessors;
+using Crawler.Framework.SearchProcessors;
 using Crawler.UnitTests.Mocks;
 using Crawler.Web.Controllers;
 using Crawler.Web.ViewModels;

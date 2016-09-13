@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Crawler.Domain.Entities;
 
-namespace Crawler.Domain.Integartion.SearchEngines
+namespace Crawler.Framework.SearchEngines
 {
 	public abstract class SearchEngineBase
 	{

@@ -2,7 +2,7 @@
 using System.Linq;
 using CsQuery;
 
-namespace Crawler.Domain.Integartion.SearchResultParsers
+namespace Crawler.Framework.SearchResultParsers
 {
 	public abstract class SearchResultParserBase
 	{

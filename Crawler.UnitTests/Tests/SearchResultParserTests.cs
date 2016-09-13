@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using Crawler.Domain.Entities;
-using Crawler.Domain.Integartion.SearchResultParsers;
+using Crawler.Framework.SearchResultParsers;
 using Crawler.UnitTests.Extensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Crawler.Domain.Integartion.SearchEngines;
+using Crawler.Framework.SearchEngines;
 using CsQuery;
 
-namespace Crawler.Domain.Integartion.SearchResultParsers
+namespace Crawler.Framework.SearchResultParsers
 {
 	public class GoogleResultParser : SearchResultParserBase
 	{

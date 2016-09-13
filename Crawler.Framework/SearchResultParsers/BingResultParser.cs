@@ -2,26 +2,26 @@
 using System.Linq;
 using CsQuery;
 
-namespace Crawler.Domain.Integartion.SearchResultParsers
+namespace Crawler.Framework.SearchResultParsers
 {
-	public class YandexResultParser : SearchResultParserBase
+	public class BingResultParser : SearchResultParserBase
 	{
 		protected override IEnumerable<IDomObject> GetItems(CQ document)
 		{
-			return document.Find(".serp-list li.serp-item").Take(10);
+			return document.Find("#b_results li.b_algo").Take(10);
 		}
 
 		protected override ParsedSearchEngineResult ParseItem(IDomObject domObject)
 		{
 			var searchItemCq = domObject.Cq();
-			var link = searchItemCq.Find(".serp-item__title > a").First();
-			var descriptionElement = searchItemCq.Find(".organic__text");
+			var link = searchItemCq.Find("h2 > a");
+			var descriptionElement = searchItemCq.Find(".b_caption > p");
 
 			return new ParsedSearchEngineResult
 			{
 				Title = link.Text(),
 				Url = link.Attr("href"),
-				Desciption = descriptionElement.Text()
+				Desciption = descriptionElement.First().Text()
 			};
 		}
 	}
