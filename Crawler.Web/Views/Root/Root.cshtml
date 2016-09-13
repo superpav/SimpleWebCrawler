@@ -1,0 +1,21 @@
+﻿@using Crawler.Web.ViewModels
+@model SearchType
+
+<div class="main-container search">
+	<ul class="nav nav-tabs">
+		<li role="presentation" class="@(Model == SearchType.New ? "active" : String.Empty)">
+			@Html.ActionLink("Search", "Root", "Root")
+		</li>
+		<li role="presentation" class="@(Model == SearchType.History ? "active" : String.Empty)">
+			@Html.ActionLink("History", "History", "Root")
+		</li>
+	</ul>
+	<div class="search-page">
+		@Html.Action("SearchForm", "Root", new {searchType = Model})
+		<div class="search-results-container" data-scroll-loader-enabled="@(Model == SearchType.History)">
+			<ul class="list-group"></ul>
+			<div class="loader"></div>
+		</div>
+	</div>
+	@Html.Partial("ErrorPopup")
+</div>

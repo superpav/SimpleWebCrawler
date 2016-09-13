@@ -10,7 +10,7 @@ namespace Crawler.Web
 			routes.MapRoute(
 				name: "Default",
 				url: "{controller}/{action}",
-				defaults: new {controller = "Home", action = "Index"}
+				defaults: new {controller = "Root", action = "Root"}
 				);
 		}
 	}
